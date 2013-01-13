@@ -8,8 +8,22 @@
           <li><%= link_to "Home",  root_path %></li>
           <li><%= link_to "Help",  help_path %></li>
           <li>	<% if user_signed_in? %>
-			     <%= current_user.uname %>
-			    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			<li><%= link_to "Users", '#' %></li>
+			            <li id="fat-menu" class="dropdown">
+			              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                <%= current_user.uname %><b class="caret"></b>
+			              </a>
+			              <ul class="dropdown-menu">
+			                <li><%= link_to "Profile", '#' %></li>
+			                <li><%= link_to "Settings", '#' %></li>
+			                <li class="divider"></li>
+			                <li>
+			                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			                </li>
+			              </ul>
+			            </li>
+			     
+			    
 			  <% else %>
 			    <%= link_to "Sign in", new_user_session_path  %>
 			  <% end %></li>
