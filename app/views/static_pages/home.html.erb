@@ -1,13 +1,28 @@
 <div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
 
-  <h2>
+  
+<% if user_signed_in? %>
+<% provide(:title, current_user.uname) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+       <%= image_tag current_user.avatar.url(:thumb) %><%= current_user.uname %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<% else %>
+<h1>Welcome to the Sample App</h1>
+<h2>
+
     This is the home page for the
     <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
     sample application.
   </h2>
-
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+  <%= link_to "Sign up now!",  new_user_registration_path , class: "btn btn-large btn-primary" %>
+<% end %>
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

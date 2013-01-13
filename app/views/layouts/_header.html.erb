@@ -4,9 +4,15 @@
       <%= link_to "sample app", '#', id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+			 
           <li><%= link_to "Home",  root_path %></li>
           <li><%= link_to "Help",  help_path %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <li>	<% if user_signed_in? %>
+			     <%= current_user.uname %>
+			    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			  <% else %>
+			    <%= link_to "Sign in", new_user_session_path  %>
+			  <% end %></li>
         </ul>
       </nav>
     </div>
